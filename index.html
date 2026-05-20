@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 2000;
+      z-index: 1000;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
     .splash-content {
@@ -100,9 +100,11 @@
       font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #0c2b3b 0%, #1a5f7a 50%, #0c2b3b 100%);
       min-height: 100vh;
+      padding: 30px 20px;
       position: relative;
     }
 
+    /* Efek gelombang background */
     body::before {
       content: '';
       position: fixed;
@@ -112,131 +114,56 @@
       bottom: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x bottom;
       background-size: cover;
-      opacity: 0.2;
+      opacity: 0.3;
       pointer-events: none;
     }
 
-    .app-container {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* ========== SIDEBAR MENU ========== */
-    .sidebar {
-      width: 280px;
-      background: rgba(10, 30, 40, 0.85);
-      backdrop-filter: blur(15px);
-      border-right: 1px solid rgba(255,255,255,0.1);
-      padding: 25px 0;
+    /* Efek tetesan air */
+    body::after {
+      content: '';
       position: fixed;
-      height: 100vh;
-      overflow-y: auto;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    .sidebar-header {
-      padding: 0 20px 25px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .sidebar-header .logo-icon {
-      font-size: 40px;
-      color: #7dd3fc;
-    }
-    .sidebar-header h3 {
-      color: #fff;
-      font-size: 18px;
-      margin-top: 10px;
-    }
-    .sidebar-header p {
-      color: rgba(255,255,255,0.6);
-      font-size: 11px;
-    }
-    .nav-menu {
-      list-style: none;
-      padding: 0 15px;
-    }
-    .nav-item {
-      margin-bottom: 8px;
-    }
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 18px;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .nav-link i {
-      font-size: 20px;
-    }
-    .nav-link:hover {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-    }
-    .nav-link.active {
-      background: rgba(125,211,252,0.2);
-      color: #7dd3fc;
-      border-left: 3px solid #7dd3fc;
-    }
-    .sidebar-footer {
-      position: absolute;
-      bottom: 20px;
+      top: 0;
       left: 0;
       right: 0;
-      padding: 15px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 20px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.5);
+      bottom: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(125,211,252,0.08) 0%, transparent 50%);
+      pointer-events: none;
     }
 
-    /* ========== MAIN CONTENT ========== */
-    .main-content {
-      flex: 1;
-      margin-left: 280px;
-      padding: 25px 30px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       position: relative;
       z-index: 1;
+      animation: fadeInUp 0.6s ease;
     }
 
-    /* Header atas */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
-      border-radius: 20px;
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
     }
-    .page-title {
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
       color: #fff;
-      font-size: 20px;
-      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 12px;
     }
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: #fff;
-    }
-    .user-info i {
-      font-size: 24px;
+    .header h1 i {
+      font-size: 36px;
       color: #7dd3fc;
     }
+    .header p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 8px;
+    }
 
-    /* Cards */
+    /* Grid cards */
     .metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -245,14 +172,16 @@
     }
     .metric {
       background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
       border-radius: 24px;
-      padding: 20px;
+      padding: 22px 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(255,255,255,0.3);
     }
     .metric:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
     .metric-label {
       font-size: 12px;
@@ -264,9 +193,13 @@
       align-items: center;
       gap: 8px;
     }
+    .metric-label i {
+      font-size: 18px;
+    }
     .metric-value {
       font-size: 44px;
       font-weight: 800;
+      line-height: 1.1;
     }
     .metric-sub {
       font-size: 11px;
@@ -275,7 +208,6 @@
     }
     .ph-color { color: #0284c7; }
     .tds-color { color: #ea580c; }
-    .weather-color { color: #059669; }
 
     /* Status bar */
     .status-bar {
@@ -285,16 +217,38 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      font-size: 15px;
       font-weight: 600;
       backdrop-filter: blur(10px);
+      animation: fadeInUp 0.5s ease;
     }
-    .status-ok { background: rgba(34,197,94,0.9); color: #fff; }
-    .status-warn { background: rgba(249,115,22,0.9); color: #fff; }
-    .status-danger { background: rgba(239,68,68,0.9); color: #fff; }
-    .status-bar i { font-size: 32px; }
-    .status-detail { font-size: 12px; font-weight: 400; margin-top: 4px; }
+    .status-bar i {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .status-detail {
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 4px;
+      opacity: 0.85;
+    }
+    .status-ok {
+      background: rgba(34, 197, 94, 0.9);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .status-warn {
+      background: rgba(249, 115, 22, 0.9);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .status-danger {
+      background: rgba(239, 68, 68, 0.9);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
 
-    /* Gauge */
+    /* Gauge bars */
     .param-bars {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -303,8 +257,10 @@
     }
     .param-bar-card {
       background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      padding: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .param-bar-label {
       font-size: 13px;
@@ -323,7 +279,8 @@
     .fill {
       height: 100%;
       border-radius: 10px;
-      transition: width 0.6s ease;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
     .range-labels {
       display: flex;
@@ -333,66 +290,34 @@
       margin-top: 8px;
     }
 
-    /* Weather Section */
-    .weather-card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
-    .weather-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .weather-header i {
-      font-size: 40px;
-      color: #fbbf24;
-    }
-    .weather-temp {
-      font-size: 36px;
-      font-weight: 700;
-      color: #1e293b;
-    }
-    .weather-details {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      text-align: center;
-    }
-    .weather-detail-item {
-      background: #f0f4f8;
-      padding: 12px;
-      border-radius: 16px;
-    }
-    .weather-detail-item i {
-      font-size: 24px;
-      color: #0284c7;
-    }
-    .weather-detail-item .label {
-      font-size: 11px;
-      color: #666;
-      margin-top: 5px;
-    }
-    .weather-detail-item .value {
-      font-size: 16px;
-      font-weight: 600;
-      color: #1e293b;
-    }
-
     /* Chart */
     .chart-wrap {
       background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
       border-radius: 24px;
       padding: 20px;
       margin-bottom: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
     .chart-header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
       flex-wrap: wrap;
+      gap: 12px;
+    }
+    .chart-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chart-title i {
+      font-size: 20px;
+      color: #0284c7;
     }
     .legend {
       display: flex;
@@ -403,6 +328,8 @@
       align-items: center;
       gap: 8px;
       font-size: 12px;
+      font-weight: 500;
+      color: #475569;
     }
     .legend-dot {
       width: 12px;
@@ -410,317 +337,398 @@
       border-radius: 50%;
     }
     .badge-live {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
       background: #dcfce7;
       color: #15803d;
-      padding: 5px 14px;
       border-radius: 30px;
-      font-size: 11px;
+      padding: 5px 14px;
     }
     .dot-live {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #15803d;
-      animation: blink 1.2s infinite;
+      animation: blink 1.2s ease-in-out infinite;
     }
     @keyframes blink {
-      0%,100%{opacity:1} 50%{opacity:0.3}
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
-    canvas { max-height: 280px; width: 100%; }
+    canvas {
+      max-height: 300px;
+      width: 100%;
+    }
 
-    /* Notifikasi */
-    .notification-list {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      padding: 20px;
-    }
-    .notification-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      border-bottom: 1px solid #e9ecef;
-    }
-    .notification-item:last-child { border-bottom: none; }
-    .notification-icon { font-size: 24px; }
-    .notification-content { flex: 1; }
-    .notification-title { font-weight: 600; color: #1e293b; }
-    .notification-time { font-size: 11px; color: #999; margin-top: 3px; }
-
-    /* Pengaturan */
-    .settings-card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      padding: 20px;
-    }
-    .settings-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px solid #e9ecef;
-    }
-    .settings-item:last-child { border-bottom: none; }
-    .toggle-switch {
-      width: 50px;
-      height: 26px;
-      background: #cbd5e1;
-      border-radius: 30px;
-      position: relative;
-      cursor: pointer;
-    }
-    .toggle-switch.active { background: #0284c7; }
-    .toggle-switch::after {
-      content: '';
-      width: 22px;
-      height: 22px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-      top: 2px;
-      left: 3px;
-      transition: 0.3s;
-    }
-    .toggle-switch.active::after { left: 25px; }
-
-    /* Hidden pages */
-    .page { display: none; }
-    .page.active-page { display: block; }
-
+    /* Footer */
     .footer-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 15px;
       padding: 15px 0;
-      color: rgba(255,255,255,0.7);
+    }
+    .update-time {
       font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,0,0,0.2);
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+    .std-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.2);
+      padding: 8px 16px;
+      border-radius: 30px;
     }
 
     @media (max-width: 768px) {
-      .sidebar { width: 250px; margin-left: -250px; }
-      .sidebar.open { margin-left: 0; }
-      .main-content { margin-left: 0; padding: 15px; }
-      .metrics { grid-template-columns: 1fr; }
-      .param-bars { grid-template-columns: 1fr; }
-      .weather-details { grid-template-columns: repeat(2, 1fr); }
+      .metrics {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .param-bars {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .header h1 {
+        font-size: 22px;
+      }
+      .metric-value {
+        font-size: 34px;
+      }
+      .splash-content h1 {
+        font-size: 24px;
+      }
+      .splash-content .logo {
+        font-size: 60px;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH SCREEN (SELAMAT DATANG) -->
 <div class="splash-screen" id="splashScreen">
   <div class="splash-content">
-    <div class="logo"><i class="ti ti-droplet-filled"></i></div>
+    <div class="logo">
+      <i class="ti ti-droplet-filled"></i>
+    </div>
     <h1>WaterQuality <span>IoT</span></h1>
     <p>Sistem Monitoring Kualitas Air Sungai</p>
-    <div class="welcome-name">Selamat Datang, Ragip Nurhidayat!</div>
-    <div class="loading-bar"><div class="loading-progress"></div></div>
-    <p style="font-size:12px; margin-top:20px;">Menginisialisasi sistem monitoring...</p>
+    <div class="welcome-name" id="welcomeName">Selamat Datang, Ragip Nurhidayat!</div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+    <p style="font-size: 12px; margin-top: 20px;">Menginisialisasi sistem monitoring...</p>
   </div>
 </div>
 
-<div class="app-container">
-  <!-- SIDEBAR MENU -->
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <i class="ti ti-droplet-filled logo-icon"></i>
-      <h3>WaterQuality IoT</h3>
-      <p>Monitoring Air Sungai Ciwulan</p>
+<!-- MAIN DASHBOARD -->
+<div class="container" id="mainDashboard" style="display: none;">
+  <div class="header">
+    <h1>
+      <i class="ti ti-droplet-filled"></i>
+      WaterQuality IoT Monitoring
+    </h1>
+    <p>Real-time monitoring pH & TDS | Protokol MQTT | IoT ESP32</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label"><i class="ti ti-activity ph-color"></i> NILAI pH</div>
+      <div class="metric-value ph-color" id="ph-val">--</div>
+      <div class="metric-sub">Skala 0–14 | Standar: 6,5 – 8,5</div>
     </div>
-    <ul class="nav-menu">
-      <li class="nav-item"><a href="#" class="nav-link active" data-page="dashboard"><i class="ti ti-dashboard"></i> Dashboard</a></li>
-      <li class="nav-item"><a href="#" class="nav-link" data-page="weather"><i class="ti ti-cloud-rain"></i> Cuaca & Lingkungan</a></li>
-      <li class="nav-item"><a href="#" class="nav-link" data-page="grafik"><i class="ti ti-chart-line"></i> Grafik Historis</a></li>
-      <li class="nav-item"><a href="#" class="nav-link" data-page="notifikasi"><i class="ti ti-bell"></i> Notifikasi</a></li>
-      <li class="nav-item"><a href="#" class="nav-link" data-page="settings"><i class="ti ti-settings"></i> Pengaturan</a></li>
-    </ul>
-    <div class="sidebar-footer">
-      <i class="ti ti-device-laptop"></i> IoT ESP32 | MQTT
+    <div class="metric">
+      <div class="metric-label"><i class="ti ti-filter tds-color"></i> TOTAL DISSOLVED SOLIDS</div>
+      <div class="metric-value tds-color" id="tds-val">--</div>
+      <div class="metric-sub">ppm (mg/L) | Standar: < 300 mg/L</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label"><i class="ti ti-database"></i> TOTAL DATA</div>
+      <div class="metric-value" id="data-count" style="font-size: 34px; color: #fff;">--</div>
+      <div class="metric-sub">Riwayat pengukuran tersimpan</div>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
-    <div class="top-bar">
-      <div class="page-title"><i class="ti ti-droplet"></i> <span id="pageTitle">Dashboard</span></div>
-      <div class="user-info"><i class="ti ti-user-circle"></i> <span>Ragip N.</span></div>
+  <div class="status-bar status-ok" id="status-bar">
+    <i class="ti ti-circle-check" id="status-icon"></i>
+    <div>
+      <div id="status-text">Memuat data sensor...</div>
+      <div class="status-detail" id="status-detail"></div>
     </div>
+  </div>
 
-    <!-- PAGE DASHBOARD -->
-    <div id="dashboard" class="page active-page">
-      <div class="metrics">
-        <div class="metric"><div class="metric-label"><i class="ti ti-activity"></i> NILAI pH</div><div class="metric-value ph-color" id="ph-val">--</div><div class="metric-sub">Skala 0-14 | Standar 6,5-8,5</div></div>
-        <div class="metric"><div class="metric-label"><i class="ti ti-filter"></i> TDS</div><div class="metric-value tds-color" id="tds-val">--</div><div class="metric-sub">ppm | Standar < 300</div></div>
-        <div class="metric"><div class="metric-label"><i class="ti ti-database"></i> TOTAL DATA</div><div class="metric-value" id="data-count" style="font-size:34px;">--</div><div class="metric-sub">Riwayat pengukuran</div></div>
+  <div class="param-bars">
+    <div class="param-bar-card">
+      <div class="param-bar-label">
+        <span><i class="ti ti-chart-bar"></i> pH Gauge</span>
+        <span id="ph-pct" style="color:#0284c7; font-weight:700;">--</span>
       </div>
-
-      <div class="status-bar status-ok" id="status-bar"><i class="ti ti-circle-check" id="status-icon"></i><div><div id="status-text">Memuat data...</div><div class="status-detail" id="status-detail"></div></div></div>
-
-      <div class="param-bars">
-        <div class="param-bar-card"><div class="param-bar-label"><span>pH Gauge</span><span id="ph-pct" style="color:#0284c7;">--</span></div><div class="track"><div class="fill" id="ph-fill" style="width:0%; background:#0284c7;"></div></div><div class="range-labels"><span>0 Asam</span><span>6,5-8,5 Layak</span><span>14 Basa</span></div></div>
-        <div class="param-bar-card"><div class="param-bar-label"><span>TDS Gauge</span><span id="tds-pct" style="color:#ea580c;">--</span></div><div class="track"><div class="fill" id="tds-fill" style="width:0%; background:#ea580c;"></div></div><div class="range-labels"><span>0 ppm</span><span>300 Batas</span><span>1000 ppm</span></div></div>
+      <div class="track">
+        <div class="fill" id="ph-fill" style="width:0%; background:linear-gradient(90deg,#0284c7,#38bdf8);"></div>
       </div>
-
-      <div class="chart-wrap"><div class="chart-header"><div class="legend"><div class="legend-item"><div class="legend-dot" style="background:#0284c7;"></div>pH</div><div class="legend-item"><div class="legend-dot" style="background:#ea580c;"></div>TDS (ppm)</div></div><div class="badge-live"><span class="dot-live"></span> LIVE</div></div><canvas id="chart"></canvas></div>
-
-      <div class="footer-row"><div class="update-time"><i class="ti ti-clock"></i> <span id="last-update">Belum ada data</span></div><div class="std-note">Standar: Permenkes RI No. 2 Tahun 2023</div></div>
+      <div class="range-labels">
+        <span>0 (Asam)</span>
+        <span>6,5 - 8,5 (Layak)</span>
+        <span>14 (Basa)</span>
+      </div>
     </div>
+    <div class="param-bar-card">
+      <div class="param-bar-label">
+        <span><i class="ti ti-chart-bar"></i> TDS Gauge</span>
+        <span id="tds-pct" style="color:#ea580c; font-weight:700;">--</span>
+      </div>
+      <div class="track">
+        <div class="fill" id="tds-fill" style="width:0%; background:linear-gradient(90deg,#ea580c,#f97316);"></div>
+      </div>
+      <div class="range-labels">
+        <span>0 ppm</span>
+        <span>300 ppm (Batas Layak)</span>
+        <span>1000 ppm</span>
+      </div>
+    </div>
+  </div>
 
-    <!-- PAGE CUACA & LINGKUNGAN -->
-    <div id="weather" class="page">
-      <div class="weather-card">
-        <div class="weather-header">
-          <i class="ti ti-cloud-rain"></i>
-          <div><div class="weather-temp" id="weatherTemp">--°C</div><div id="weatherDesc">Memuat data cuaca...</div></div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div class="chart-title">
+        <i class="ti ti-chart-line"></i> Grafik Riwayat Pengukuran
+      </div>
+      <div class="chart-right">
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#0284c7;"></div> pH</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ea580c;"></div> TDS (ppm)</div>
         </div>
-        <div class="weather-details">
-          <div class="weather-detail-item"><i class="ti ti-droplet"></i><div class="label">Kelembaban</div><div class="value" id="weatherHumidity">--%</div></div>
-          <div class="weather-detail-item"><i class="ti ti-wind"></i><div class="label">Kecepatan Angin</div><div class="value" id="weatherWind">-- km/h</div></div>
-          <div class="weather-detail-item"><i class="ti ti-thermometer"></i><div class="label">Suhu Udara</div><div class="value" id="weatherAirTemp">--°C</div></div>
-          <div class="weather-detail-item"><i class="ti ti-sun"></i><div class="label">UV Index</div><div class="value" id="weatherUV">--</div></div>
-        </div>
-      </div>
-      <div class="chart-wrap">
-        <div class="chart-header"><div class="legend"><div class="legend-item"><div class="legend-dot" style="background:#0284c7;"></div>Suhu Lingkungan</div></div></div>
-        <canvas id="weatherChart"></canvas>
+        <div class="badge-live"><span class="dot-live"></span> LIVE</div>
       </div>
     </div>
+    <canvas id="chart"></canvas>
+  </div>
 
-    <!-- PAGE GRAFIK HISTORIS -->
-    <div id="grafik" class="page">
-      <div class="chart-wrap">
-        <div class="chart-header"><div class="legend"><div class="legend-item"><div class="legend-dot" style="background:#0284c7;"></div>pH</div><div class="legend-item"><div class="legend-dot" style="background:#ea580c;"></div>TDS</div></div></div>
-        <canvas id="historyChart"></canvas>
-      </div>
-    </div>
-
-    <!-- PAGE NOTIFIKASI -->
-    <div id="notifikasi" class="page">
-      <div class="notification-list" id="notificationList">
-        <div class="notification-item"><i class="ti ti-info-circle notification-icon" style="color:#0284c7;"></i><div class="notification-content"><div class="notification-title">Sistem siap digunakan</div><div class="notification-time">Just now</div></div></div>
-      </div>
-    </div>
-
-    <!-- PAGE PENGATURAN -->
-    <div id="settings" class="page">
-      <div class="settings-card">
-        <div class="settings-item"><span><i class="ti ti-bell"></i> Notifikasi Push</span><div class="toggle-switch active" id="toggleNotif"></div></div>
-        <div class="settings-item"><span><i class="ti ti-refresh"></i> Auto Refresh (10 detik)</span><div class="toggle-switch active" id="toggleRefresh"></div></div>
-        <div class="settings-item"><span><i class="ti ti-moon"></i> Mode Gelap</span><div class="toggle-switch" id="toggleDark"></div></div>
-      </div>
-    </div>
+  <div class="footer-row">
+    <div class="update-time"><i class="ti ti-clock"></i> <span id="last-update">Belum ada data</span></div>
+    <div class="std-note">Standar: Permenkes RI No. 2 Tahun 2023 | pH 6,5-8,5 | TDS < 300 mg/L</div>
   </div>
 </div>
 
 <script>
-  // Splash screen
-  setTimeout(() => {
-    document.getElementById('splashScreen').classList.add('splash-hidden');
-    setTimeout(() => {
-      document.getElementById('splashScreen').style.display = 'none';
+  // ============================================================
+  // SPLASH SCREEN (SELAMAT DATANG)
+  // ============================================================
+  setTimeout(function() {
+    const splash = document.getElementById('splashScreen');
+    const mainDashboard = document.getElementById('mainDashboard');
+    
+    splash.classList.add('splash-hidden');
+    
+    setTimeout(function() {
+      splash.style.display = 'none';
+      mainDashboard.style.display = 'block';
     }, 800);
   }, 2500);
 
-  // Menu navigasi
-  const navLinks = document.querySelectorAll('.nav-link');
-  const pages = document.querySelectorAll('.page');
-  const pageTitleSpan = document.getElementById('pageTitle');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      const pageId = link.getAttribute('data-page');
-      pages.forEach(page => page.classList.remove('active-page'));
-      document.getElementById(pageId).classList.add('active-page');
-      if (pageId === 'dashboard') pageTitleSpan.innerText = 'Dashboard';
-      else if (pageId === 'weather') pageTitleSpan.innerText = 'Cuaca & Lingkungan';
-      else if (pageId === 'grafik') pageTitleSpan.innerText = 'Grafik Historis';
-      else if (pageId === 'notifikasi') pageTitleSpan.innerText = 'Notifikasi';
-      else if (pageId === 'settings') pageTitleSpan.innerText = 'Pengaturan';
-    });
-  });
-
-  // Weather API simulation
-  function updateWeather() {
-    const temps = [28, 29, 30, 31, 27];
-    const randomTemp = temps[Math.floor(Math.random() * temps.length)];
-    document.getElementById('weatherTemp').innerHTML = randomTemp + '°C';
-    document.getElementById('weatherDesc').innerHTML = 'Cerah Berawan';
-    document.getElementById('weatherHumidity').innerHTML = Math.floor(65 + Math.random() * 20) + '%';
-    document.getElementById('weatherWind').innerHTML = Math.floor(5 + Math.random() * 15) + ' km/h';
-    document.getElementById('weatherAirTemp').innerHTML = randomTemp + '°C';
-    document.getElementById('weatherUV').innerHTML = (3 + Math.random() * 5).toFixed(1);
-  }
-  updateWeather();
-  setInterval(updateWeather, 60000);
-
-  // Dashboard data simulation
+  // ============================================================
+  // KONFIGURASI DASHBOARD
+  // DEMO_MODE = true  : menggunakan data simulasi
+  // DEMO_MODE = false : mengambil data dari api.php (MQTT/MySQL)
+  // ============================================================
   const DEMO_MODE = true;
-  let chart, weatherChart, historyChart;
-  let demoData = [];
+
+  let chart;
+  let demoData = generateDemoData(59);
 
   function generateDemoData(jumlah) {
     const data = [];
-    let pH = 7.2, tds = 250;
+    let pH = 7.2;
+    let tds = 250;
     for (let i = jumlah; i >= 0; i--) {
       pH = Math.min(9.0, Math.max(5.5, pH + (Math.random() - 0.5) * 0.15));
       tds = Math.min(900, Math.max(80, tds + (Math.random() - 0.5) * 18));
-      data.push({ pH: parseFloat(pH.toFixed(2)), tds: Math.round(tds), waktu: new Date(Date.now() - i * 60000).toISOString() });
+      data.push({
+        pH: parseFloat(pH.toFixed(2)),
+        tds: Math.round(tds),
+        waktu: new Date(Date.now() - i * 60000).toISOString()
+      });
     }
     return data;
   }
-  demoData = generateDemoData(59);
 
   function cekKelayakan(pH, tds) {
     const pHLayak = pH >= 6.5 && pH <= 8.5;
     const tdsLayak = tds < 300;
-    if (pHLayak && tdsLayak) return { teks: "✅ Air LAYAK Dikonsumsi", detail: "pH dan TDS memenuhi standar", kelas: "status-ok", icon: "ti ti-circle-check" };
-    else if (!pHLayak && !tdsLayak) return { teks: "⚠️ Air TIDAK LAYAK", detail: "pH dan TDS tidak memenuhi standar", kelas: "status-danger", icon: "ti ti-alert-triangle" };
-    else if (!pHLayak) return { teks: "⚠️ Air TIDAK LAYAK", detail: `pH ${pH < 6.5 ? "terlalu asam" : "terlalu basa"} (${pH.toFixed(2)})`, kelas: "status-warn", icon: "ti ti-alert-triangle" };
-    else return { teks: "⚠️ Air TIDAK LAYAK", detail: `TDS terlalu tinggi (${tds} ppm > 300 ppm)`, kelas: "status-warn", icon: "ti ti-alert-triangle" };
+    
+    if (pHLayak && tdsLayak) {
+      return {
+        status: "LAYAK",
+        teks: "✅ Air LAYAK Dikonsumsi",
+        detail: "pH dan TDS memenuhi standar Permenkes RI No. 2 Tahun 2023",
+        kelas: "status-ok",
+        icon: "ti ti-circle-check"
+      };
+    } else if (!pHLayak && !tdsLayak) {
+      return {
+        status: "TIDAK LAYAK",
+        teks: "⚠️ Air TIDAK LAYAK Dikonsumsi",
+        detail: "pH dan TDS tidak memenuhi standar baku mutu",
+        kelas: "status-danger",
+        icon: "ti ti-alert-triangle"
+      };
+    } else if (!pHLayak) {
+      let penyebab = pH < 6.5 ? "terlalu asam" : "terlalu basa";
+      return {
+        status: "TIDAK LAYAK",
+        teks: "⚠️ Air TIDAK LAYAK Dikonsumsi",
+        detail: `pH ${penyebab} (${pH.toFixed(2)}) - Standar: 6,5 - 8,5`,
+        kelas: "status-warn",
+        icon: "ti ti-alert-triangle"
+      };
+    } else {
+      return {
+        status: "TIDAK LAYAK",
+        teks: "⚠️ Air TIDAK LAYAK Dikonsumsi",
+        detail: `TDS terlalu tinggi (${tds} ppm > 300 ppm)`,
+        kelas: "status-warn",
+        icon: "ti ti-alert-triangle"
+      };
+    }
   }
 
-  function formatJam(iso) { return new Date(iso).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }); }
-  function formatWaktuISO(iso) { return new Date(iso).toLocaleString('id-ID'); }
+  function formatWaktuISO(iso) {
+    return new Date(iso).toLocaleString('id-ID', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+  }
+
+  function formatJam(iso) {
+    return new Date(iso).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+  }
 
   function renderGrafik(labels, pHarr, tdsArr) {
-    const ctx = document.getElementById('chart').getContext('2d');
+    const canvas = document.getElementById('chart');
+    const ctx = canvas.getContext('2d');
+    
     if (chart) chart.destroy();
+    
     chart = new Chart(ctx, {
-      type: 'line', data: { labels, datasets: [
-        { label: 'pH', data: pHarr, borderColor: '#0284c7', backgroundColor: 'rgba(2,132,199,0.1)', borderWidth: 2, tension: 0.35, fill: true, pointRadius: 3, yAxisID: 'y' },
-        { label: 'TDS', data: tdsArr, borderColor: '#ea580c', backgroundColor: 'rgba(234,88,12,0.1)', borderWidth: 2, tension: 0.35, fill: true, pointRadius: 3, yAxisID: 'y1' }
-      ] }, options: { responsive: true, interaction: { mode: 'index' }, scales: { y: { min: 0, max: 14, title: { display: true, text: 'pH' } }, y1: { position: 'right', min: 0, max: 1000, title: { display: true, text: 'TDS (ppm)' } } } }
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'pH',
+            data: pHarr,
+            borderColor: '#0284c7',
+            backgroundColor: 'rgba(2,132,199,0.1)',
+            borderWidth: 2.5,
+            tension: 0.35,
+            fill: true,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            pointBackgroundColor: '#0284c7',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 1.5,
+            yAxisID: 'y'
+          },
+          {
+            label: 'TDS (ppm)',
+            data: tdsArr,
+            borderColor: '#ea580c',
+            backgroundColor: 'rgba(234,88,12,0.1)',
+            borderWidth: 2.5,
+            tension: 0.35,
+            fill: true,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            pointBackgroundColor: '#ea580c',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 1.5,
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.dataset.label;
+                let value = context.parsed.y;
+                if (label === 'pH') return `${label}: ${value.toFixed(2)}`;
+                return `${label}: ${Math.round(value)} ppm`;
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0, max: 14,
+            title: { display: true, text: 'pH', color: '#0284c7', font: { size: 11, weight: 'bold' } },
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { color: '#666', font: { size: 10 } }
+          },
+          y1: {
+            position: 'right',
+            min: 0, max: 1000,
+            title: { display: true, text: 'TDS (ppm)', color: '#ea580c', font: { size: 11, weight: 'bold' } },
+            grid: { drawOnChartArea: false },
+            ticks: { color: '#666', font: { size: 10 } }
+          },
+          x: {
+            ticks: { color: '#666', font: { size: 9 }, maxRotation: 45, minRotation: 45, maxTicksLimit: 8 },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          }
+        }
+      }
     });
   }
 
   function prosesDanTampilkan(data) {
-    if (!data || !data.length) return;
+    if (!data || data.length === 0) return;
+    
     const labels = data.map(d => formatJam(d.waktu));
-    const pHarr = data.map(d => d.pH);
-    const tdsArr = data.map(d => d.tds);
-    const lastpH = pHarr[pHarr.length - 1], lastTds = tdsArr[tdsArr.length - 1];
+    const pHarr = data.map(d => parseFloat(d.pH));
+    const tdsArr = data.map(d => parseInt(d.tds));
+    
+    const lastpH = pHarr[pHarr.length - 1];
+    const lastTds = tdsArr[tdsArr.length - 1];
+    const lastWaktu = data[data.length - 1].waktu;
+    
     document.getElementById('ph-val').innerHTML = lastpH.toFixed(2);
     document.getElementById('tds-val').innerHTML = lastTds;
     document.getElementById('data-count').innerHTML = data.length;
-    document.getElementById('last-update').innerHTML = 'Update: ' + formatWaktuISO(data[data.length - 1].waktu);
-    document.getElementById('ph-fill').style.width = (lastpH / 14 * 100) + '%';
-    document.getElementById('tds-fill').style.width = Math.min(100, (lastTds / 1000 * 100)) + '%';
+    document.getElementById('last-update').innerHTML = `Update: ${formatWaktuISO(lastWaktu)}`;
+    
+    const pHpersen = Math.min(100, (lastpH / 14) * 100);
+    const tdspersen = Math.min(100, (lastTds / 1000) * 100);
+    document.getElementById('ph-fill').style.width = pHpersen + '%';
+    document.getElementById('tds-fill').style.width = tdspersen + '%';
     document.getElementById('ph-pct').innerHTML = lastpH.toFixed(2);
     document.getElementById('tds-pct').innerHTML = lastTds + ' ppm';
-    const k = cekKelayakan(lastpH, lastTds);
-    const sb = document.getElementById('status-bar');
-    sb.className = 'status-bar ' + k.kelas;
-    document.getElementById('status-icon').className = k.icon;
-    document.getElementById('status-text').innerHTML = k.teks;
-    document.getElementById('status-detail').innerHTML = k.detail;
+    
+    const kelayakan = cekKelayakan(lastpH, lastTds);
+    const statusBar = document.getElementById('status-bar');
+    const statusIcon = document.getElementById('status-icon');
+    
+    statusBar.className = 'status-bar ' + kelayakan.kelas;
+    statusIcon.className = kelayakan.icon;
+    document.getElementById('status-text').innerHTML = kelayakan.teks;
+    document.getElementById('status-detail').innerHTML = kelayakan.detail;
+    
     renderGrafik(labels, pHarr, tdsArr);
   }
 
@@ -729,18 +737,40 @@
       const last = demoData[demoData.length - 1];
       const pHbaru = Math.min(9.0, Math.max(5.5, last.pH + (Math.random() - 0.5) * 0.15));
       const tdsbaru = Math.min(900, Math.max(80, last.tds + (Math.random() - 0.5) * 20));
-      demoData.push({ pH: parseFloat(pHbaru.toFixed(2)), tds: Math.round(tdsbaru), waktu: new Date().toISOString() });
+      
+      demoData.push({
+        pH: parseFloat(pHbaru.toFixed(2)),
+        tds: Math.round(tdsbaru),
+        waktu: new Date().toISOString()
+      });
+      
       if (demoData.length > 60) demoData.shift();
       prosesDanTampilkan(demoData);
+      return;
+    }
+    
+    try {
+      const response = await fetch('api.php');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data && data.length > 0) {
+        prosesDanTampilkan(data);
+      }
+    } catch (error) {
+      console.error('Gagal mengambil data:', error);
+      const statusBar = document.getElementById('status-bar');
+      statusBar.className = 'status-bar status-danger';
+      document.getElementById('status-icon').className = 'ti ti-plug-off';
+      document.getElementById('status-text').innerHTML = '❌ Gagal terhubung ke server';
+      document.getElementById('status-detail').innerHTML = error.message;
     }
   }
 
-  setTimeout(() => { ambilData(); setInterval(ambilData, 10000); }, 2600);
-
-  // Toggle switches
-  document.getElementById('toggleNotif').addEventListener('click', function() { this.classList.toggle('active'); });
-  document.getElementById('toggleRefresh').addEventListener('click', function() { this.classList.toggle('active'); });
-  document.getElementById('toggleDark').addEventListener('click', function() { this.classList.toggle('active'); document.body.classList.toggle('dark-mode'); });
+  // Jalankan dashboard setelah splash screen
+  setTimeout(() => {
+    ambilData();
+    setInterval(ambilData, 10000);
+  }, 2600);
 </script>
 </body>
 </html>
